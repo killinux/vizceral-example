@@ -1,0 +1,110 @@
+{
+  "renderer": "region", "name": "test",
+  "maxVolume": 100.0,
+  "nodes": [ 
+    {
+          "renderer": "region", 
+          "name": "main", 
+          "maxVolume": 100.0 ,
+          "displayName": "点外卖" 
+    },
+	{
+          "renderer": "region",
+          "name": "findShop",
+          "maxVolume": 100.0 ,
+          "displayName": "找商店"
+    },
+    {
+          "renderer": "region", 
+          "name": "findGoods", 
+          "maxVolume": 100.0,
+          "displayName": "找商品" 
+    },
+    {
+          "renderer": "region", 
+          "name": "out", 
+          "maxVolume": 100.0,
+          "displayName": "没找到你要的哟" 
+    },
+    {
+          "renderer": "region",
+          "name": "getIt",
+          "maxVolume": 100.0,
+          "displayName": "找到喽，您要的是 $shop 的 $goods"
+    }
+  ],
+  "connections": [
+    {
+          "source": "main", 
+          "target": "findShop", 
+          "metrics": { 
+            "danger": 1, 
+            "normal": 10.0, 
+            "warning": 1.0 
+          }
+    },
+	{
+          "source": "main",
+          "target": "findGoods",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    },
+	{
+          "source": "findGoods",
+          "target": "findShop",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    },
+	{
+          "source": "findShop",
+          "target": "findGoods",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    },
+    {
+          "source": "findShop", 
+          "target": "out", 
+          "metrics": { 
+            "danger": 1, 
+            "normal": 10.0, 
+            "warning": 1.0 
+          }
+    },
+    {
+          "source": "findGoods",
+          "target": "out",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    },
+    {
+          "source": "findShop",
+          "target": "getIt",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    },
+    {
+          "source": "findGoods",
+          "target": "getIt",
+          "metrics": {
+            "danger": 1,
+            "normal": 10.0,
+            "warning": 1.0
+          }
+    }
+  ]
+}
